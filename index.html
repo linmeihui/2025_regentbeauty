@@ -3,481 +3,577 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>我要闖關「無痕去眼袋+涼感無痛除毛」2025主題月活動</title>
+    <title>我要闖關「無痕去眼袋」2025主題月活動</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;700&display=swap');
+        @import url('https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@300;400;500;600;700&display=swap');
         
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background: linear-gradient(135deg, #fce4ec 0%, #f8bbd9 100%);
+            background: linear-gradient(135deg, #fce7f3 0%, #fbcfe8 50%, #f9a8d4 100%);
             min-height: 100vh;
-            position: relative;
-            overflow-x: hidden;
         }
         
-        .sakura-petal {
+        .cherry-blossom {
             position: absolute;
             width: 20px;
             height: 20px;
-            background: rgba(255, 182, 193, 0.3);
+            background: radial-gradient(circle, #fce7f3 30%, #f9a8d4 70%);
             border-radius: 50% 0 50% 0;
-            animation: fall linear infinite;
-            z-index: 1;
+            opacity: 0.6;
+            animation: float 6s ease-in-out infinite;
         }
         
-        @keyframes fall {
-            0% {
-                transform: translateY(-100vh) rotate(0deg);
-                opacity: 1;
-            }
-            100% {
-                transform: translateY(100vh) rotate(360deg);
-                opacity: 0;
-            }
+        .cherry-blossom:nth-child(odd) {
+            animation-delay: -2s;
         }
         
-        .content-container {
-            position: relative;
-            z-index: 10;
+        .cherry-blossom:nth-child(even) {
+            animation-delay: -4s;
         }
         
-        .question-card {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            border: 2px solid rgba(255, 182, 193, 0.5);
-            box-shadow: 0 8px 32px rgba(255, 182, 193, 0.3);
-        }
-        
-        .option-btn {
-            transition: all 0.3s ease;
-            background: rgba(255, 255, 255, 0.8);
-            border: 2px solid rgba(255, 182, 193, 0.3);
-        }
-        
-        .option-btn:hover,
-        .option-btn:active {
-            background: rgba(255, 182, 193, 0.2);
-            transform: translateY(-2px);
-        }
-        
-        @media (max-width: 640px) {
-            .option-btn:hover {
-                transform: none;
-            }
-            .option-btn:active {
-                transform: scale(0.98);
-            }
-        }
-        
-        .correct {
-            background: rgba(76, 175, 80, 0.2) !important;
-            border-color: #4CAF50 !important;
-        }
-        
-        .incorrect {
-            background: rgba(244, 67, 54, 0.2) !important;
-            border-color: #f44336 !important;
+        @keyframes float {
+            0%, 100% { transform: translateY(0px) rotate(0deg); }
+            50% { transform: translateY(-20px) rotate(180deg); }
         }
         
         .firework {
             position: absolute;
             width: 4px;
             height: 4px;
+            background: #fbbf24;
             border-radius: 50%;
-            animation: firework 1s ease-out forwards;
+            animation: firework 1s ease-out infinite;
         }
         
         @keyframes firework {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(20);
-                opacity: 0;
-            }
+            0% { transform: scale(0) rotate(0deg); opacity: 1; }
+            100% { transform: scale(20) rotate(360deg); opacity: 0; }
+        }
+        
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 200px;
+            background: #f3f4f6;
+            border-radius: 12px;
+            overflow: hidden;
+        }
+        
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
         }
     </style>
 </head>
-<body>
-    <!-- 櫻花花瓣動畫 -->
-    <div id="sakura-container"></div>
-    
-    <div class="content-container min-h-screen flex items-center justify-center p-4">
+<body class="relative overflow-x-hidden">
+    <!-- 櫻花花瓣裝飾 -->
+    <div class="cherry-blossom" style="top: 10%; left: 5%;"></div>
+    <div class="cherry-blossom" style="top: 20%; right: 10%;"></div>
+    <div class="cherry-blossom" style="top: 40%; left: 15%;"></div>
+    <div class="cherry-blossom" style="top: 60%; right: 20%;"></div>
+    <div class="cherry-blossom" style="top: 80%; left: 25%;"></div>
+    <div class="cherry-blossom" style="top: 30%; right: 5%;"></div>
+    <div class="cherry-blossom" style="top: 70%; left: 8%;"></div>
+    <div class="cherry-blossom" style="top: 50%; right: 15%;"></div>
+
+    <div class="container mx-auto px-4 py-8 relative z-10">
         <!-- 姓名輸入頁面 -->
-        <div id="name-page" class="question-card rounded-3xl p-4 sm:p-8 max-w-md w-full text-center relative">
-            <div class="absolute top-3 left-3 sm:top-4 sm:left-4 text-xs sm:text-sm text-pink-600 font-medium">2025主題月活動</div>
-            <h1 class="text-2xl sm:text-3xl font-bold text-pink-800 mb-3 sm:mb-4 mt-6 sm:mt-0">我要闖關</h1>
-            <h2 class="text-lg sm:text-xl font-semibold text-pink-700 mb-4 sm:mb-6 px-2">「無痕去眼袋+涼感無痛除毛」</h2>
-            <div class="mb-4 sm:mb-6">
-                <label class="block text-base sm:text-lg font-medium text-pink-700 mb-3">請輸入您的姓名：</label>
-                <input type="text" id="user-name" class="w-full px-4 py-3 border-2 border-pink-300 rounded-xl focus:border-pink-500 focus:outline-none text-center text-base sm:text-lg" placeholder="請輸入姓名">
-            </div>
-            <button onclick="startChallenge()" class="w-full sm:w-auto bg-pink-500 active:bg-pink-600 text-white font-bold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-base sm:text-lg">
-                開始闖關 🌸
-            </button>
-        </div>
-        
-        <!-- 影片觀看頁面 -->
-        <div id="video-page" class="question-card rounded-3xl p-4 sm:p-8 max-w-md sm:max-w-2xl w-full text-center hidden">
-            <h2 class="text-xl sm:text-2xl font-bold text-pink-800 mb-4 sm:mb-6">第一部分：觀看影片</h2>
-            <div class="mb-4 sm:mb-6">
-                <div class="bg-pink-50 border-2 border-pink-200 rounded-xl p-4 sm:p-6 mx-auto" style="max-width: 400px;">
-                    <h3 class="text-base sm:text-lg font-bold text-pink-800 mb-4">林宏信醫師 - 眼袋真相</h3>
-                    <div class="relative" style="aspect-ratio: 9/16; max-height: 500px;">
-                        <iframe 
-                            src="https://www.youtube.com/embed/_UZfN6zdBbQ?rel=0&modestbranding=1" 
-                            title="林宏信醫師影片" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
-                            allowfullscreen
-                            class="w-full h-full rounded-lg">
-                        </iframe>
-                    </div>
-                    <div class="mt-3">
-                        <button onclick="openYouTubeVideo()" class="bg-red-500 active:bg-red-600 text-white font-bold py-2 px-4 rounded-lg transition-all duration-300 text-sm">
-                            🎥 在YouTube中觀看
-                        </button>
-                    </div>
-                    <p class="text-xs sm:text-sm text-pink-500 mt-3 text-center">觀看完畢後請點擊下方按鈕繼續</p>
+        <div id="nameInput" class="max-w-2xl mx-auto">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border-4 border-pink-200">
+                <div class="relative mb-8">
+                    <div class="text-sm text-pink-600 font-medium mb-4">2025主題月活動</div>
+                    <h1 class="text-4xl font-bold text-center text-pink-800 mb-2">
+                        我要闖關
+                    </h1>
+                    <h2 class="text-2xl font-semibold text-center text-pink-700">
+                        「無痕去眼袋」
+                    </h2>
+                </div>
+                <div class="text-center mb-6">
+                    <p class="text-lg text-pink-700 mb-4">歡迎參加活動！請先填寫您的姓名</p>
+                    <input type="text" id="userName" placeholder="請輸入您的姓名" 
+                           class="w-full max-w-md mx-auto px-4 py-3 text-lg border-2 border-pink-300 rounded-xl focus:border-pink-500 focus:outline-none text-center">
+                </div>
+                <div class="text-center">
+                    <button onclick="startActivity()" 
+                            class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition-colors shadow-lg">
+                        開始闖關 🌸
+                    </button>
                 </div>
             </div>
-            <p class="text-sm sm:text-base text-pink-700 mb-4">請觀看完整影片後進入測驗</p>
-            <button onclick="startQuiz()" class="w-full sm:w-auto bg-pink-500 active:bg-pink-600 text-white font-bold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base">
-                進入測驗 ✨
-            </button>
         </div>
-        
 
-        
-        <!-- 測驗頁面 -->
-        <div id="quiz-page" class="question-card rounded-3xl p-4 sm:p-8 max-w-md sm:max-w-2xl w-full hidden">
-            <div class="text-center mb-4 sm:mb-6">
-                <h3 id="topic-title" class="text-lg sm:text-2xl font-bold text-pink-800 mb-2 px-2"></h3>
-                <p id="question-counter" class="text-sm sm:text-base text-pink-600"></p>
+        <!-- 影片選擇頁面 -->
+        <div id="videoSelection" class="max-w-6xl mx-auto hidden">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border-4 border-pink-200">
+                <h2 class="text-2xl font-bold text-center text-pink-800 mb-8">
+                    第一部分：請選擇一支影片觀看
+                </h2>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <!-- 影片一 -->
+                    <div class="bg-pink-50 rounded-2xl p-6 border-2 border-pink-200">
+                        <h3 class="text-lg font-semibold text-pink-800 mb-4">
+                            ✅ 一：眼袋、臥蠶、黑眼圈有什麼不一樣？！
+                        </h3>
+                        <div class="video-container mb-4" onclick="playVideoFullscreen('https://www.youtube.com/embed/z94AEcnPEIs?autoplay=1&fs=1')" style="cursor: pointer;">
+                            <iframe src="https://www.youtube.com/embed/z94AEcnPEIs" 
+                                    title="眼袋、臥蠶、黑眼圈有什麼不一樣？！" 
+                                    allowfullscreen></iframe>
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 hover:opacity-100 transition-opacity">
+                                <div class="bg-white/90 rounded-full p-4">
+                                    <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M8 5v10l8-5-8-5z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="selectVideo(1)" 
+                                class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-xl transition-colors">
+                            選擇此影片
+                        </button>
+                    </div>
+
+                    <!-- 影片二 -->
+                    <div class="bg-pink-50 rounded-2xl p-6 border-2 border-pink-200">
+                        <h3 class="text-lg font-semibold text-pink-800 mb-4">
+                            ✅ 二：天天擦眼霜，眼袋可以消嗎？！
+                        </h3>
+                        <div class="video-container mb-4" onclick="playVideoFullscreen('https://www.youtube.com/embed/_UZfN6zdBbQ?autoplay=1&fs=1')" style="cursor: pointer;">
+                            <iframe src="https://www.youtube.com/embed/_UZfN6zdBbQ" 
+                                    title="天天擦眼霜，眼袋可以消嗎？！" 
+                                    allowfullscreen></iframe>
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 hover:opacity-100 transition-opacity">
+                                <div class="bg-white/90 rounded-full p-4">
+                                    <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M8 5v10l8-5-8-5z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="selectVideo(2)" 
+                                class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-xl transition-colors">
+                            選擇此影片
+                        </button>
+                    </div>
+
+                    <!-- 影片三 -->
+                    <div class="bg-pink-50 rounded-2xl p-6 border-2 border-pink-200">
+                        <h3 class="text-lg font-semibold text-pink-800 mb-4">
+                            ✅ 三：年輕人也可能會有眼袋出現嗎？！
+                        </h3>
+                        <div class="video-container mb-4" onclick="playVideoFullscreen('https://www.youtube.com/embed/VuB5J3fMcYc?autoplay=1&fs=1')" style="cursor: pointer;">
+                            <iframe src="https://www.youtube.com/embed/VuB5J3fMcYc" 
+                                    title="年輕人也可能會有眼袋出現嗎？！" 
+                                    allowfullscreen></iframe>
+                            <div class="absolute inset-0 flex items-center justify-center bg-black/20 opacity-0 hover:opacity-100 transition-opacity">
+                                <div class="bg-white/90 rounded-full p-4">
+                                    <svg class="w-8 h-8 text-pink-600" fill="currentColor" viewBox="0 0 20 20">
+                                        <path d="M8 5v10l8-5-8-5z"/>
+                                    </svg>
+                                </div>
+                            </div>
+                        </div>
+                        <button onclick="selectVideo(3)" 
+                                class="w-full bg-pink-500 hover:bg-pink-600 text-white font-bold py-2 px-4 rounded-xl transition-colors">
+                            選擇此影片
+                        </button>
+                    </div>
+                </div>
             </div>
-            
-            <div id="question-content" class="mb-4 sm:mb-6">
-                <h4 id="question-text" class="text-base sm:text-xl font-semibold text-pink-800 mb-4 px-2"></h4>
-                <div id="options-container" class="space-y-3"></div>
-            </div>
-            
-            <div id="answer-feedback" class="hidden mb-4 sm:mb-6 p-3 sm:p-4 rounded-xl">
-                <p id="feedback-text" class="font-medium mb-2 text-sm sm:text-base"></p>
-                <p id="explanation-text" class="text-xs sm:text-sm"></p>
-            </div>
-            
-            <button id="next-btn" onclick="nextQuestion()" class="w-full bg-pink-500 active:bg-pink-600 text-white font-bold py-3 px-6 rounded-xl transition-all duration-300 hidden text-sm sm:text-base">
-                下一題 →
-            </button>
         </div>
-        
+
+        <!-- 問題頁面 -->
+        <div id="questionPage" class="max-w-4xl mx-auto hidden">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border-4 border-pink-200">
+                <h2 class="text-2xl font-bold text-center text-pink-800 mb-8">
+                    第二部分：回答問題
+                </h2>
+                <div id="questionContent"></div>
+            </div>
+        </div>
+
+        <!-- 答案頁面 -->
+        <div id="answerPage" class="max-w-4xl mx-auto hidden">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border-4 border-pink-200">
+                <div id="answerContent"></div>
+                <div class="text-center mt-6">
+                    <button onclick="nextQuestion()" 
+                            class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition-colors">
+                        下一題
+                    </button>
+                </div>
+            </div>
+        </div>
+
         <!-- 結果頁面 -->
-        <div id="result-page" class="question-card rounded-3xl p-4 sm:p-8 max-w-md w-full text-center hidden">
-            <div id="fireworks-container" class="relative mb-4 sm:mb-6"></div>
-            <h2 class="text-xl sm:text-2xl font-bold text-pink-800 mb-4 sm:mb-6">測驗結果</h2>
-            <div class="bg-gradient-to-r from-pink-100 to-purple-100 rounded-xl p-4 sm:p-6 mb-4 sm:mb-6">
-                <p id="result-name" class="text-lg sm:text-xl font-bold text-pink-800 mb-2"></p>
-                <p id="result-score" class="text-base sm:text-lg text-pink-700 mb-3 sm:mb-4"></p>
-                <p id="result-message" class="text-sm sm:text-base text-pink-600 font-medium px-2">非常感謝您熱情參與，10題答對7題可進入下一關!!</p>
+        <div id="resultPage" class="max-w-4xl mx-auto hidden">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border-4 border-pink-200 relative">
+                <div id="fireworks" class="absolute inset-0 pointer-events-none"></div>
+                <div class="text-center">
+                    <h2 class="text-3xl font-bold text-pink-800 mb-6">闖關結果</h2>
+                    <div class="bg-pink-100 rounded-2xl p-6 mb-6 border-2 border-pink-300">
+                        <p class="text-2xl font-bold text-pink-800 mb-2" id="playerName"></p>
+                        <p class="text-xl text-pink-700" id="scoreResult"></p>
+                    </div>
+                    <p class="text-lg text-pink-700 mb-6">非常感謝您熱情參與！答對可進入下一關。</p>
+                    <button onclick="goToNextLevel()" 
+                            class="bg-gradient-to-r from-pink-500 to-pink-600 hover:from-pink-600 hover:to-pink-700 text-white font-bold py-4 px-8 rounded-xl text-xl transition-all shadow-lg transform hover:scale-105">
+                        進入下一關 🎯
+                    </button>
+                </div>
             </div>
-            <button id="next-round-btn" onclick="nextRound()" class="w-full sm:w-auto bg-gradient-to-r from-pink-500 to-purple-500 active:from-pink-600 active:to-purple-600 text-white font-bold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base hidden">
-                進入第二關 🎯
-            </button>
-            <button id="retry-btn" onclick="retryQuiz()" class="w-full sm:w-auto bg-gradient-to-r from-orange-500 to-red-500 active:from-orange-600 active:to-red-600 text-white font-bold py-3 px-6 sm:px-8 rounded-xl transition-all duration-300 text-sm sm:text-base hidden">
-                重新測驗 🔄
-            </button>
         </div>
-        
+
         <!-- 第二關頁面 -->
-        <div id="round2-page" class="question-card rounded-3xl p-8 max-w-2xl w-full text-center hidden">
-            <h2 class="text-3xl font-bold text-pink-800 mb-4">第二關</h2>
-            <h3 class="text-xl font-semibold text-purple-700 mb-6">眼周老化自我評估表</h3>
-            <p class="text-2xl font-bold text-pink-600 mb-8">「你的眼睛比你還誠實?!」</p>
-            <div class="bg-gradient-to-r from-pink-50 to-purple-50 rounded-xl p-6">
-                <p class="text-lg text-pink-700">準備開始眼周老化評估...</p>
+        <div id="secondLevel" class="max-w-4xl mx-auto hidden">
+            <div class="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl p-8 border-4 border-pink-200">
+                <h2 class="text-3xl font-bold text-center text-pink-800 mb-4">第二關</h2>
+                <h3 class="text-xl font-semibold text-center text-pink-700 mb-8">
+                    眼周老化自我評估表<br>
+                    「你的眼睛比你還誠實?!」
+                </h3>
+                <div class="bg-pink-50 rounded-2xl p-6 border-2 border-pink-200">
+                    <p class="text-lg text-pink-800 text-center">
+                        🔍 準備開始眼周老化自我評估<br>
+                        讓我們一起了解您的眼周狀況！
+                    </p>
+                    <div class="text-center mt-6">
+                        <button class="bg-pink-500 hover:bg-pink-600 text-white font-bold py-3 px-8 rounded-xl text-lg transition-colors">
+                            開始評估
+                        </button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 
     <script>
-        let userName = '';
-        let currentTopic = 0;
+        let currentVideo = 0;
         let currentQuestion = 0;
-        let scores = [0, 0]; // [topic1, topic2]
-        let totalQuestions = [0, 0];
-        
-        const topics = [
-            {
-                title: "主題一：#眼袋小測驗｜懂眼袋不顯老！",
-                questions: [
-                    {
-                        text: "💡【眼袋VS臥蠶】妳知道差在哪嗎？",
-                        options: ["都是脂肪", "一個可愛一個顯老", "傳說中財庫"],
-                        correct: 1,
-                        explanation: "臥蠶是笑起來可愛的那團肉，眼袋是往下垂、讓人顯老又累的！妳分得清楚嗎？"
-                    },
-                    {
-                        text: "🧊【眼袋手術會留疤嗎？】",
-                        options: ["一定會", "視方式而定", "看運氣"],
-                        correct: 1,
-                        explanation: "【內開法】從眼內做手術✔️無疤痕，適合年輕族群；【外開法】有切口，適合皮膚鬆弛者。"
-                    },
-                    {
-                        text: "❓【眼袋可以不動刀消掉嗎？】",
-                        options: ["熬夜少點就好了", "用眼霜有用", "輕中度者可評估"],
-                        correct: 2,
-                        explanation: "有些人可以透過雷射或玻尿酸填補改善，但大多數中重度的眼袋還是建議手術處理效果最自然！"
-                    },
-                    {
-                        text: "【眼袋手術最怕術後做什麼？】",
-                        options: ["熬夜", "洗頭", "看電視"],
-                        correct: 0,
-                        explanation: "術後一週內應避免熬夜、低頭與劇烈運動，才能讓眼部順利癒合！"
-                    },
-                    {
-                        text: "【眼袋明顯但皮膚緊實，適合哪種手術？】",
-                        options: ["外開", "內開", "不需手術"],
-                        correct: 1,
-                        explanation: "年輕人脂肪膨出、但皮膚沒鬆弛，內開法無疤痕、效果佳、恢復快！"
-                    }
-                ]
-            },
-            {
-                title: "主題二：#除毛真相QA｜輕鬆無痛做女神！",
-                questions: [
-                    {
-                        text: "🌿【除毛前要怎麼準備？】",
-                        options: ["當天去剃", "前一天剃", "不要剃"],
-                        correct: 1,
-                        explanation: "前一天剃毛剛剛好，毛根還在才抓得到～別當天剃喔，皮膚可能還紅紅的！"
-                    },
-                    {
-                        text: "【做一次除毛後毛會立刻不見？】",
-                        options: ["會", "不會，要等掉", "永遠不會掉"],
-                        correct: 1,
-                        explanation: "毛髮會在7～14天內慢慢脫落，請耐心等待光滑現身～"
-                    },
-                    {
-                        text: "【為什麼繆斯女神除毛不痛？】",
-                        options: ["機器溫柔", "有涼感冷卻技術", "輕輕掃過沒感覺"],
-                        correct: 1,
-                        explanation: "【方思云主任】女醫師操作細心溫柔加上人工藍寶石冷卻探頭，溫度控制在15℃，極舒適！"
-                    },
-                    {
-                        text: "【男生能不能做雷射除毛？】",
-                        options: ["當然可以，但私密處除外。", "不行", "會變女生"],
-                        correct: 0,
-                        explanation: "當然可以！越來越多男生選擇臉部、胸部、鬍鬚除毛！"
-                    },
-                    {
-                        text: "【完整除毛療程需要做幾次？】",
-                        options: ["1次", "2次", "約4～6次"],
-                        correct: 2,
-                        explanation: "毛髮有「生長期、退化期、休止期、脫落期」，4個不同週期循環，要打在對的時間才會「根」治乾淨唷～"
-                    }
-                ]
-            }
-        ];
-        
-        // 創建櫻花花瓣
-        function createSakuraPetals() {
-            const container = document.getElementById('sakura-container');
-            for (let i = 0; i < 15; i++) {
-                const petal = document.createElement('div');
-                petal.className = 'sakura-petal';
-                petal.style.left = Math.random() * 100 + '%';
-                petal.style.animationDuration = (Math.random() * 3 + 2) + 's';
-                petal.style.animationDelay = Math.random() * 2 + 's';
-                container.appendChild(petal);
-            }
-        }
-        
-        function startChallenge() {
-            const nameInput = document.getElementById('user-name');
-            if (!nameInput.value.trim()) {
-                alert('請輸入您的姓名！');
+        let correctAnswers = 0;
+        let userName = '';
+
+        const questions = {
+            1: [
+                {
+                    question: "眼袋、臥蠶、黑眼圈有什麼不一樣？！",
+                    options: [
+                        "A. 都是長在眼睛下面，只是叫法不同",
+                        "B. 三個是完全不同的東西",
+                        "C. 臥蠶跟眼袋一樣，黑眼圈是顏色不同"
+                    ],
+                    correct: 1,
+                    explanation: `
+                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ 正確答案：B</h3>
+                        <div class="text-left space-y-3">
+                            <p>• <strong>臥蠶</strong> 👉 靠近睫毛下方、笑起來會鼓鼓的肌肉，讓眼神更有神、更親和，屬於「可愛加分款」。</p>
+                            <p>• <strong>眼袋</strong> 👉 位在臥蠶下方，是眼下脂肪膨出或皮膚鬆弛造成，會讓人看起來疲累、顯老。</p>
+                            <p>• <strong>黑眼圈</strong> 👉 是色素沉澱或血液循環不良造成的「顏色暗沉」，有時會和眼袋一起出現，看起來更像沒睡飽。</p>
+                        </div>
+                        <div class="bg-yellow-100 rounded-lg p-4 mt-4">
+                            <p class="text-sm"><strong>🔍 小提醒：</strong><br>
+                            臥蠶＝年輕感、眼袋＝老態感，黑眼圈＝疲憊感，三者分清楚，才能正確改善！</p>
+                        </div>
+                    `
+                },
+                {
+                    question: "如果我疑似有眼袋了，但我害怕手術，該怎麼辦？",
+                    options: [
+                        "A. 放著不管，反正只是外觀問題",
+                        "B. 用眼霜或按摩試試看",
+                        "C. 可先評估非手術方式，如PRP或填補改善"
+                    ],
+                    correct: 2,
+                    explanation: `
+                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ 正確答案：C</h3>
+                        <p class="mb-4">如果眼袋還在輕中度階段，或您暫時不想動刀，可以考慮「非手術改善」：</p>
+                        <div class="text-left space-y-2 mb-4">
+                            <p>• <strong>PRP（自體高濃度血小板血漿）</strong>：利用自身生長因子，刺激膠原蛋白再生，讓眼下皮膚更緊緻、有彈性。</p>
+                            <p>• <strong>玻尿酸/脂肪填補</strong>：用填充物修飾凹陷的淚溝，讓眼袋視覺感降低。</p>
+                            <p>• <strong>雷射緊膚</strong>：改善輕微鬆弛，延緩眼袋惡化。</p>
+                        </div>
+                        <div class="bg-blue-100 rounded-lg p-4 mb-4">
+                            <p class="text-sm">✨ <strong>麗晶診所PRP再生醫美</strong>：醫師精準注射，幫助淡化細紋、緊緻眼周，同時提升膚質。</p>
+                        </div>
+                        <div class="bg-yellow-100 rounded-lg p-4">
+                            <p class="text-sm"><strong>🔍 小提醒：</strong><br>
+                            嚴重的結構性眼袋，非手術方式只能改善外觀，想徹底去除仍需手術處理，但可先用PRP延緩或減輕狀況。</p>
+                        </div>
+                    `
+                }
+            ],
+            2: [
+                {
+                    question: "天天擦眼霜，眼袋可以消嗎？！",
+                    options: [
+                        "A. 可以，眼霜能消除所有眼袋",
+                        "B. 不行，眼袋不是擦一擦就沒了",
+                        "C. 有時可以，看是什麼原因造成的"
+                    ],
+                    correct: 2,
+                    explanation: `
+                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ 正確答案：C</h3>
+                        <p class="mb-4">眼霜主要功能是 <strong>保濕、淡化細紋、改善輕微水腫</strong>，對「熬夜腫眼、缺水乾紋」有幫助。</p>
+                        <p class="mb-4">但如果是 <strong>脂肪膨出型眼袋（結構性）</strong>，再貴的眼霜也無法讓脂肪回去，只能透過醫美或手術改善。</p>
+                        <div class="bg-yellow-100 rounded-lg p-4">
+                            <p class="text-sm">所以重點是 <strong>先找出眼袋成因，對症下藥才有效！</strong></p>
+                        </div>
+                    `
+                },
+                {
+                    question: "如果我疑似有眼袋了，但我害怕手術，該怎麼辦？",
+                    options: [
+                        "A. 放著不管，反正只是外觀問題",
+                        "B. 用眼霜或按摩試試看",
+                        "C. 可先評估非手術方式，如PRP或填補改善"
+                    ],
+                    correct: 2,
+                    explanation: `
+                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ 正確答案：C</h3>
+                        <p class="mb-4">如果眼袋還在輕中度階段，或您暫時不想動刀，可以考慮「非手術改善」：</p>
+                        <div class="text-left space-y-2 mb-4">
+                            <p>• <strong>PRP（自體高濃度血小板血漿）</strong>：利用自身生長因子，刺激膠原蛋白再生，讓眼下皮膚更緊緻、有彈性。</p>
+                            <p>• <strong>玻尿酸/脂肪填補</strong>：用填充物修飾凹陷的淚溝，讓眼袋視覺感降低。</p>
+                            <p>• <strong>雷射緊膚</strong>：改善輕微鬆弛，延緩眼袋惡化。</p>
+                        </div>
+                        <div class="bg-blue-100 rounded-lg p-4 mb-4">
+                            <p class="text-sm">✨ <strong>麗晶診所PRP再生醫美</strong>：醫師精準注射，幫助淡化細紋、緊緻眼周，同時提升膚質。</p>
+                        </div>
+                        <div class="bg-yellow-100 rounded-lg p-4">
+                            <p class="text-sm"><strong>🔍 小提醒：</strong><br>
+                            嚴重的結構性眼袋，非手術方式只能改善外觀，想徹底去除仍需手術處理，但可先用PRP延緩或減輕狀況。</p>
+                        </div>
+                    `
+                }
+            ],
+            3: [
+                {
+                    question: "我很年輕但已經有眼袋了，這樣可以做手術嗎？",
+                    options: [
+                        "A. 不行，年輕人不能動刀",
+                        "B. 可以，但建議先擦眼霜試看看",
+                        "C. 可以，視眼袋成因評估適合的方式"
+                    ],
+                    correct: 2,
+                    explanation: `
+                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ 正確答案：C</h3>
+                        <p class="mb-4">即使年紀輕，如果是脂肪膨出型的眼袋（天生體質或遺傳），也是可以透過「<strong>內開式眼袋手術</strong>」處理！</p>
+                        <p class="mb-4">這種方式無疤痕、恢復期短，很適合沒有明顯皮膚鬆弛的年輕人。</p>
+                        <div class="bg-yellow-100 rounded-lg p-4">
+                            <p class="text-sm">❗<strong>重點不是年齡，而是眼袋的型態與嚴重度。</strong>眼霜只能改善乾燥與微浮腫，對「結構性眼袋」幾乎沒幫助哦！</p>
+                        </div>
+                    `
+                },
+                {
+                    question: "如果我疑似有眼袋了，但我害怕手術，該怎麼辦？",
+                    options: [
+                        "A. 放著不管，反正只是外觀問題",
+                        "B. 用眼霜或按摩試試看",
+                        "C. 可先評估非手術方式，如PRP或填補改善"
+                    ],
+                    correct: 2,
+                    explanation: `
+                        <h3 class="text-xl font-bold text-green-600 mb-4">✅ 正確答案：C</h3>
+                        <p class="mb-4">如果眼袋還在輕中度階段，或您暫時不想動刀，可以考慮「非手術改善」：</p>
+                        <div class="text-left space-y-2 mb-4">
+                            <p>• <strong>PRP（自體高濃度血小板血漿）</strong>：利用自身生長因子，刺激膠原蛋白再生，讓眼下皮膚更緊緻、有彈性。</p>
+                            <p>• <strong>玻尿酸/脂肪填補</strong>：用填充物修飾凹陷的淚溝，讓眼袋視覺感降低。</p>
+                            <p>• <strong>雷射緊膚</strong>：改善輕微鬆弛，延緩眼袋惡化。</p>
+                        </div>
+                        <div class="bg-blue-100 rounded-lg p-4 mb-4">
+                            <p class="text-sm">✨ <strong>麗晶診所PRP再生醫美</strong>：醫師精準注射，幫助淡化細紋、緊緻眼周，同時提升膚質。</p>
+                        </div>
+                        <div class="bg-yellow-100 rounded-lg p-4">
+                            <p class="text-sm"><strong>🔍 小提醒：</strong><br>
+                            嚴重的結構性眼袋，非手術方式只能改善外觀，想徹底去除仍需手術處理，但可先用PRP延緩或減輕狀況。</p>
+                        </div>
+                    `
+                }
+            ]
+        };
+
+        function startActivity() {
+            userName = document.getElementById('userName').value.trim();
+            if (!userName) {
+                alert('請輸入您的姓名');
                 return;
             }
-            userName = nameInput.value.trim();
-            showPage('video-page');
+            
+            document.getElementById('nameInput').classList.add('hidden');
+            document.getElementById('videoSelection').classList.remove('hidden');
         }
-        
-        function startQuiz() {
-            startTopic(1);
-        }
-        
-        function startTopic(topicIndex) {
-            currentTopic = topicIndex - 1;
+
+        function selectVideo(videoNum) {
+            currentVideo = videoNum;
             currentQuestion = 0;
-            totalQuestions[currentTopic] = topics[currentTopic].questions.length;
+            correctAnswers = 0;
+            
+            document.getElementById('videoSelection').classList.add('hidden');
             showQuestion();
-            showPage('quiz-page');
         }
-        
+
         function showQuestion() {
-            const topic = topics[currentTopic];
-            const question = topic.questions[currentQuestion];
+            const questionData = questions[currentVideo][currentQuestion];
             
-            document.getElementById('topic-title').textContent = topic.title;
-            document.getElementById('question-counter').textContent = `第 ${currentQuestion + 1} 題 / 共 ${topic.questions.length} 題`;
-            document.getElementById('question-text').textContent = question.text;
+            document.getElementById('questionContent').innerHTML = `
+                <h3 class="text-xl font-bold text-pink-800 mb-6">${questionData.question}</h3>
+                <div class="space-y-4">
+                    ${questionData.options.map((option, index) => `
+                        <button onclick="selectAnswer(${index})" 
+                                class="w-full text-left p-4 bg-pink-50 hover:bg-pink-100 border-2 border-pink-200 rounded-xl transition-colors">
+                            ${option}
+                        </button>
+                    `).join('')}
+                </div>
+            `;
             
-            const optionsContainer = document.getElementById('options-container');
-            optionsContainer.innerHTML = '';
-            
-            question.options.forEach((option, index) => {
-                const button = document.createElement('button');
-                button.className = 'option-btn w-full p-3 sm:p-4 rounded-xl text-left font-medium text-sm sm:text-base';
-                button.textContent = `${String.fromCharCode(65 + index)}. ${option}`;
-                button.onclick = () => selectAnswer(index);
-                optionsContainer.appendChild(button);
-            });
-            
-            document.getElementById('answer-feedback').classList.add('hidden');
-            document.getElementById('next-btn').classList.add('hidden');
+            document.getElementById('questionPage').classList.remove('hidden');
         }
-        
-        function selectAnswer(selectedIndex) {
-            const question = topics[currentTopic].questions[currentQuestion];
-            const options = document.querySelectorAll('.option-btn');
+
+        function selectAnswer(answerIndex) {
+            const questionData = questions[currentVideo][currentQuestion];
+            const isCorrect = answerIndex === questionData.correct;
             
-            options.forEach((btn, index) => {
-                btn.disabled = true;
-                if (index === question.correct) {
-                    btn.classList.add('correct');
-                } else if (index === selectedIndex && index !== question.correct) {
-                    btn.classList.add('incorrect');
-                }
-            });
-            
-            const isCorrect = selectedIndex === question.correct;
             if (isCorrect) {
-                scores[currentTopic]++;
+                correctAnswers++;
             }
             
-            const feedback = document.getElementById('answer-feedback');
-            const feedbackText = document.getElementById('feedback-text');
-            const explanationText = document.getElementById('explanation-text');
+            document.getElementById('answerContent').innerHTML = questionData.explanation;
             
-            feedbackText.textContent = isCorrect ? '✅ 答對了！' : '❌ 答錯了！';
-            feedbackText.className = isCorrect ? 'font-medium mb-2 text-green-600' : 'font-medium mb-2 text-red-600';
-            explanationText.textContent = `💬 ${question.explanation}`;
-            
-            feedback.classList.remove('hidden');
-            document.getElementById('next-btn').classList.remove('hidden');
+            document.getElementById('questionPage').classList.add('hidden');
+            document.getElementById('answerPage').classList.remove('hidden');
         }
-        
+
         function nextQuestion() {
             currentQuestion++;
-            if (currentQuestion < topics[currentTopic].questions.length) {
+            
+            if (currentQuestion < questions[currentVideo].length) {
+                document.getElementById('answerPage').classList.add('hidden');
                 showQuestion();
             } else {
-                // 檢查是否完成兩個主題
-                if (currentTopic === 0) {
-                    // 完成第一個主題，開始第二個主題
-                    startTopic(2);
-                } else {
-                    // 完成所有主題，顯示結果
-                    showResults();
-                }
+                showResult();
             }
         }
-        
-        function showResults() {
-            const totalScore = scores[0] + scores[1];
-            const totalQuestions = topics[0].questions.length + topics[1].questions.length;
+
+        function showResult() {
+            document.getElementById('answerPage').classList.add('hidden');
             
-            document.getElementById('result-name').textContent = userName;
-            document.getElementById('result-score').textContent = `答對 ${totalScore} 題 / 共 ${totalQuestions} 題`;
+            document.getElementById('playerName').textContent = userName;
+            document.getElementById('scoreResult').textContent = `答對 ${correctAnswers} 題`;
             
-            // 根據分數顯示不同的按鈕和訊息
-            const nextButton = document.getElementById('next-round-btn');
-            const retryButton = document.getElementById('retry-btn');
-            const resultMessage = document.getElementById('result-message');
-            
-            if (totalScore >= 7) {
-                // 答對7題以上，可以進入下一關
-                nextButton.classList.remove('hidden');
-                retryButton.classList.add('hidden');
-                resultMessage.textContent = '非常感謝您熱情參與，10題答對7題可進入下一關!!';
-                // 如果全部答對，顯示煙火
-                if (totalScore === totalQuestions) {
-                    createFireworks();
-                }
-            } else {
-                // 答對不足7題，顯示重新測驗按鈕
-                nextButton.classList.add('hidden');
-                retryButton.classList.remove('hidden');
-                resultMessage.textContent = '只差一點點了 加油! 再試一次!!';
+            // 如果全部答對，顯示煙火
+            if (correctAnswers === questions[currentVideo].length) {
+                createFireworks();
             }
             
-            showPage('result-page');
+            document.getElementById('resultPage').classList.remove('hidden');
         }
-        
+
         function createFireworks() {
-            const container = document.getElementById('fireworks-container');
-            const colors = ['#ff6b6b', '#4ecdc4', '#45b7d1', '#96ceb4', '#ffeaa7'];
+            const fireworksContainer = document.getElementById('fireworks');
             
             for (let i = 0; i < 20; i++) {
                 setTimeout(() => {
                     const firework = document.createElement('div');
                     firework.className = 'firework';
-                    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
                     firework.style.left = Math.random() * 100 + '%';
                     firework.style.top = Math.random() * 100 + '%';
-                    container.appendChild(firework);
+                    firework.style.animationDelay = Math.random() * 2 + 's';
+                    
+                    const colors = ['#fbbf24', '#f59e0b', '#d97706', '#92400e'];
+                    firework.style.background = colors[Math.floor(Math.random() * colors.length)];
+                    
+                    fireworksContainer.appendChild(firework);
                     
                     setTimeout(() => {
                         firework.remove();
-                    }, 1000);
+                    }, 3000);
                 }, i * 100);
             }
         }
-        
 
-        
-        function openYouTubeVideo() {
-            const youtubeUrl = 'https://www.youtube.com/shorts/_UZfN6zdBbQ?feature=share';
+        function goToNextLevel() {
+            document.getElementById('resultPage').classList.add('hidden');
+            document.getElementById('secondLevel').classList.remove('hidden');
+        }
+
+        function playVideoFullscreen(videoUrl) {
+            // 創建全螢幕影片播放器
+            const fullscreenDiv = document.createElement('div');
+            fullscreenDiv.style.cssText = `
+                position: fixed;
+                top: 0;
+                left: 0;
+                width: 100vw;
+                height: 100vh;
+                background: black;
+                z-index: 9999;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
             
-            // 嘗試在新視窗開啟YouTube
-            try {
-                const newWindow = window.open(youtubeUrl, '_blank', 'width=800,height=600,scrollbars=yes,resizable=yes');
-                if (!newWindow || newWindow.closed || typeof newWindow.closed == 'undefined') {
-                    // 如果彈出視窗被阻擋，直接跳轉
-                    window.location.href = youtubeUrl;
+            const iframe = document.createElement('iframe');
+            iframe.style.cssText = `
+                width: 100%;
+                height: 100%;
+                border: none;
+            `;
+            iframe.src = videoUrl;
+            iframe.allowFullscreen = true;
+            iframe.allow = "autoplay; fullscreen";
+            
+            const closeButton = document.createElement('button');
+            closeButton.innerHTML = '✕';
+            closeButton.style.cssText = `
+                position: absolute;
+                top: 20px;
+                right: 20px;
+                background: rgba(255, 255, 255, 0.8);
+                border: none;
+                border-radius: 50%;
+                width: 40px;
+                height: 40px;
+                font-size: 20px;
+                cursor: pointer;
+                z-index: 10000;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+            `;
+            
+            const closeVideo = function() {
+                document.body.removeChild(fullscreenDiv);
+                document.body.style.overflow = 'auto';
+                // 自動跳回影片選擇頁面
+                document.getElementById('videoSelection').classList.remove('hidden');
+                // 隱藏其他可能顯示的頁面
+                document.getElementById('questionPage').classList.add('hidden');
+                document.getElementById('answerPage').classList.add('hidden');
+                document.getElementById('resultPage').classList.add('hidden');
+                document.getElementById('secondLevel').classList.add('hidden');
+            };
+            
+            closeButton.onclick = closeVideo;
+            
+            fullscreenDiv.appendChild(iframe);
+            fullscreenDiv.appendChild(closeButton);
+            document.body.appendChild(fullscreenDiv);
+            document.body.style.overflow = 'hidden';
+            
+            // ESC 鍵關閉
+            const handleEsc = function(e) {
+                if (e.key === 'Escape') {
+                    closeVideo();
+                    document.removeEventListener('keydown', handleEsc);
                 }
-            } catch (e) {
-                // 備用方案：直接跳轉
-                window.location.href = youtubeUrl;
-            }
-        }
-        
-        function retryQuiz() {
-            // 重置分數
-            scores = [0, 0];
-            currentTopic = 0;
-            currentQuestion = 0;
+            };
+            document.addEventListener('keydown', handleEsc);
             
-            // 重新開始第一個主題
-            startTopic(1);
+
         }
-        
-        function nextRound() {
-            showPage('round2-page');
-        }
-        
-        function showPage(pageId) {
-            const pages = ['name-page', 'video-page', 'quiz-page', 'result-page', 'round2-page'];
-            pages.forEach(id => {
-                document.getElementById(id).classList.add('hidden');
-            });
-            document.getElementById(pageId).classList.remove('hidden');
-        }
-        
-        // 初始化
-        createSakuraPetals();
     </script>
-<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96bf9495d0b9843a',t:'MTc1NDY2MjA1MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+<script>(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.innerHTML="window.__CF$cv$params={r:'96dd7345d616f1bc',t:'MTc1NDk3NTI1OC4wMDAwMDA='};var a=document.createElement('script');a.nonce='';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
 </html>
